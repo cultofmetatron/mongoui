@@ -3,6 +3,9 @@ derby.use(require('./ui'));
 var app = derby.createApp(module);
 
 app.ready(function(model) {
+  var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0]);
+
+
   model.on('set','dbName',function(path,object){
   });
   model.on('set','collectionBox', function(path,obj){
@@ -16,7 +19,6 @@ app.ready(function(model) {
   app.changeDatabase = function(e, element, next) {
     app.model.set('dbName', $(element).find('a').attr('data-value'));
     console.log(app.model.get('dbName'));
-    //var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0]);
     next();
   };
   app.toggleCollection = function (e, element, next){
