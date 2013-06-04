@@ -9,6 +9,8 @@
     "monk": "0.7.1",
     "express": "3.1.0",
     "derby": "0.3.15",
-    "async": "*"
+    "async": "*",
+    "codemirror": "3.13.00"
+
   }
 }

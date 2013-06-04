@@ -4,9 +4,9 @@ var async = require('async');
 var express = require('express');
 var monk = require('monk');
 var config = require('./config.json');
-var db = monk(config.database.default.host + 
-  ':' + 
-  config.database.default.port + 
+var db = monk(config.database.default.host +
+  ':' +
+  config.database.default.port +
   '/' +
   config.database.default.name);
 
@@ -15,6 +15,8 @@ var derby = require('derby');
 // derby.use(require('derby-ui-boot'));
 
 var app = new express();
+
+require('codemirror')(app);
 
 var server = http.createServer(app);
 
@@ -56,11 +58,11 @@ store.afterDb("set", "collectionBoxName", function(txn, doc, prevDoc, done) {
       if (e) console.error(e)
       // db.get(txn[3][1]).find({},{$limit:20}, function (e, items){
       if (items.length === 0) {
-        model.set('collectionBox', "Collection is empty");  
+        model.set('collectionBox', "Collection is empty");
       } else {
-        model.set('collectionBox', JSON.stringify(items,0,2));  
+        model.set('collectionBox', JSON.stringify(items,0,2));
       }
-      
+
       done()
     })
   }
@@ -112,7 +114,7 @@ derbyApp.get('/main', function(page, model, params, next) {
       model.subscribe('collectionBox', function() {
         page.render();
         // done();
-      });      
+      });
     });
   }]);
 });
