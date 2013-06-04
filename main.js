@@ -3,7 +3,7 @@ derby.use(require('./ui'));
 var app = derby.createApp(module);
 
 app.ready(function(model) {
-  var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0]);
+  //var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0]);
 
 
   model.on('set','dbName',function(path,object){
